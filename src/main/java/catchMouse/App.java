@@ -24,11 +24,17 @@ public class App
         final Robot rb = new Robot();
 //            rb=new Robot();
             rb.setAutoDelay(100);
+        
         rb.mouseMove(370, 210);
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame window = new JFrame("catchMouse");
         window.setUndecorated(true);
-        window.setBackground(new Color(120,0,0,120));
+        System.out.println(System.getProperty("java.runtime.version"));
+        if(System.getProperty("java.runtime.version").contains("1.7")) {
+            window.setBackground(new Color(120,0,0,120));
+        } else {
+            com.sun.awt.AWTUtilities.setWindowOpaque(window, false);
+        }
         window.addMouseListener(new MouseListener() {
             public void mouseClicked(MouseEvent e){}
             public void mouseEntered(MouseEvent e){}
